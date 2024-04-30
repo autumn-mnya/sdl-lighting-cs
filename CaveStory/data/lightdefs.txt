@@ -1,0 +1,52 @@
+# Welcome to the lighting engine file, here you can determine how light is displayed in-game
+
+# 4 Things emit light, NPC's, Quote, Bullets, and particles. Internally these are called NpChar, MyChar, Bullet, and Caret.
+# By default, the lighting engine will try to approximate how lighting should look, the defaults are:
+# Resize light to framerect size, Solid white max brightness.
+
+# The defines below overwrite default lighting behaviour.
+
+# To define custom light, use "TYPE_ID = #..."
+# Valid types: NPC, MYCHAR, BULLET, CARET
+
+# Format: RED,GREEN,BLUE.  In hexadecimal, use an online colour picked if you dont know how this works. Or ask.
+
+# The "#FF0000" is the red colour, the "#FF" is max brightness, and "#1.2" is the size multiplier.
+# Default size is 1.5x the size of the framerect.
+NPC_111 = #FF0000 #FF #1.2
+
+# There is only 1 MyChar (for now) (the player), so we use id 0
+MYCHAR_0 = #FFFFFF #FF #5.0
+
+# Bullets [Look in Bullet.cpp ActBullet() for bullet id's] (https://gitlab.com/generic-username/tscextended/-/blob/master/src/Bullet.cpp#L2300)
+BULLET_1 = #FFFFFF #FF #1.2
+
+# Carets [Look in Caret.cpp, gCaretTable for the ids] (https://gitlab.com/generic-username/tscextended/-/blob/master/src/Caret.cpp#L25)
+CARET_0 = #FFFFFF #FF #1.3
+
+
+# ============== The defaults
+
+# Make the null NPC emit no light
+NPC_000 = #FFFFFF #00 #0
+
+# Same with H/V Triggers
+NPC_046 = #FFFFFF #00 #0
+
+# Same with Hidden Items
+NPC_125= #FFFFFF #00 #0
+
+# Doors
+NPC_018 = #FFFFFF #44 #1.4
+
+# Make hearts red
+NPC_087 = #FF0000 #FF #1.3
+
+# Make EXP yellowish
+NPC_001 = #FFFF44 #FF #0.9
+
+# Make Spikes red
+NPC_211 = #FF0000 #FF #4.0
+
+# Make rooms with boss 0 have no lighting just incase
+BOSS_000= #FFFFFF #00 #0
