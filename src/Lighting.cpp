@@ -147,6 +147,7 @@ int APPROXIMATE_STAGE_LIGHTING = 0;
 int frame_x = 0, frame_y = 0;
 unsigned int gCurrentDarkLevel = 255;
 unsigned int gStageLightLevel = 0;
+int light_level = 0;
 
 void DoModeActionLighting()
 {
@@ -165,7 +166,12 @@ void DoModeActionLighting()
 
     SDL_SetTextureBlendMode(darkMap, SDL_BLENDMODE_MUL);
     RendLightNPC(frame_x, frame_y);
-    SDL_SetRenderDrawColor(gRenderer, 0xFF, 0xFF, 0xFF, gCurrentDarkLevel);
+    if (gDisableLighting && (DisallowLightingDisable == false))
+        light_level = 255;
+    else
+        light_level = gCurrentDarkLevel;
+
+    SDL_SetRenderDrawColor(gRenderer, 0xFF, 0xFF, 0xFF, light_level);
     SDL_RenderFillRect(gRenderer, NULL);
 
     SDL_SetRenderTarget(gRenderer, rendTarg);

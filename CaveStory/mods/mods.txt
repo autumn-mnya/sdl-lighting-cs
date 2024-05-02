@@ -1,3 +1,4 @@
 autpi
+pause
 sdl
 lighting

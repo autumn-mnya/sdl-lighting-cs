@@ -87,19 +87,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\API_Pause.cpp" />
     <ClCompile Include="src\AutPI.cpp" />
     <ClCompile Include="src\LightDefines.cpp" />
     <ClCompile Include="src\Lighting.cpp" />
+    <ClCompile Include="src\Lighting_PauseMenu.cpp" />
     <ClCompile Include="src\lua\Lua.cpp" />
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\SDL_API.cpp" />
     <ClCompile Include="src\\mod_loader.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\API_Pause.h" />
     <ClInclude Include="src\AutPI.h" />
     <ClInclude Include="src\cave_story.h" />
     <ClInclude Include="src\LightDefines.h" />
     <ClInclude Include="src\Lighting.h" />
+    <ClInclude Include="src\Lighting_PauseMenu.h" />
     <ClInclude Include="src\lua\Lua.h" />
     <ClInclude Include="src\Main.h" />
     <ClInclude Include="src\SDL_API.h" />

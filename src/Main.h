@@ -6,5 +6,7 @@
 #include <SDL.h>
 
 extern int mag;
+extern bool gDisableLighting;
+extern bool DisallowLightingDisable;
 
 extern SDL_Texture* darkMap;

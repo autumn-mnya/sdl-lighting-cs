@@ -9,6 +9,9 @@
     <ClCompile Include="src\SDL_API.cpp" />
     <ClCompile Include="src\Lighting.cpp" />
     <ClCompile Include="src\LightDefines.cpp" />
+    <ClCompile Include="src\AutPI.cpp" />
+    <ClCompile Include="src\API_Pause.cpp" />
+    <ClCompile Include="src\Lighting_PauseMenu.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\cave_story.h" />
@@ -21,6 +24,9 @@
     <ClInclude Include="src\SDL_API.h" />
     <ClInclude Include="src\Lighting.h" />
     <ClInclude Include="src\LightDefines.h" />
+    <ClInclude Include="src\AutPI.h" />
+    <ClInclude Include="src\API_Pause.h" />
+    <ClInclude Include="src\Lighting_PauseMenu.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="lua">

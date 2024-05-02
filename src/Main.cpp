@@ -15,10 +15,15 @@
 #include "Lighting.h"
 #include "LightDefines.h"
 #include "lua/Lua.h"
+#include "API_Pause.h"
+#include "Lighting_PauseMenu.h"
 
 SDL_Texture* darkMap;
 
 int mag = 2;
+bool enable_pause_code = false;
+bool gDisableLighting = false;
+bool DisallowLightingDisable = false; // dont do this unless absolutely neccessary to the mod
 
 void InitSurfaces()
 {
@@ -33,7 +38,7 @@ void DirectDraw()
 	SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "linear");
 
 	darkMap = SDL_CreateTexture(gRenderer, SDL_PIXELFORMAT_RGBA32, SDL_TEXTUREACCESS_TARGET, WINDOW_WIDTH * window_magnification, WINDOW_HEIGHT * window_magnification);
-	//    SDL_SetTextureBlendMode(darkMap, SDL_BLENDMODE_MOD);
+	SDL_SetTextureBlendMode(darkMap, SDL_BLENDMODE_MOD);
 	SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "nearest");
 }
 
@@ -41,6 +46,14 @@ void InitMod(void)
 {
 	LoadAutPiDll();
 	LoadSdlDll();
+	DisallowLightingDisable = ModLoader_GetSettingBool("Disallow Disabling Lighting", false);
+	enable_pause_code = ModLoader_GetSettingBool("Enable Pause Screen Code", false);
+	if (enable_pause_code)
+	{
+		LoadPauseMenuDll();
+		RegisterSaveConfigElement(SaveLightingConfig);
+		RegisterPreModeElement(InitLightingPauseMenuCalls);
+	}
 	RegisterSDLStartDirectDrawElement(DirectDraw);
 	RegisterPreModeElement(InitSurfaces);
 	LoadLightingData();
