@@ -1,5 +1,10 @@
 local lighttest = ModCS.Rect.Create(0, 0, 256, 256)
 
+-- used for lerping one number to another
+function lerp(start, target, speed)
+    return start + (target - start) * (speed / 100)
+end
+
 function ModCS.Game.Draw()
 	--ModCS.Rect.Put(lighttest, 0, 0, 41)
 	
@@ -33,4 +38,14 @@ end
 function ModCS.Tsc.Command.SLL()
 	local level = ModCS.Tsc.GetArgument(1)
 	ModCS.Lighting.SetLight(level)
+end
+
+-- Set Light Smooth (SLS)
+-- Lerps the light value from one to another
+function ModCS.Tsc.Command.SLS()
+	local level = ModCS.Tsc.GetArgument(1)
+	local speed = ModCS.Tsc.GetArgument(2)
+	local start = ModCS.Lighting.GetLight()
+	local val = lerp(start, level, speed)
+	ModCS.Lighting.SetLight(val)
 end

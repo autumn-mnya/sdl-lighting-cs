@@ -42,10 +42,21 @@ void DirectDraw()
 	SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "nearest");
 }
 
+void ReleaseData()
+{
+	if (autpiDLL != nullptr)
+		free(autpiDLL);
+	if (pauseDLL != nullptr)
+		free(pauseDLL);
+	if (sdlDLL != nullptr)
+		free(sdlDLL);
+}
+
 void InitMod(void)
 {
 	LoadAutPiDll();
 	LoadSdlDll();
+	RegisterReleaseElement(ReleaseData); // release all 3 dlls once finished
 	DisallowLightingDisable = ModLoader_GetSettingBool("Disallow Disabling Lighting", false);
 	enable_pause_code = ModLoader_GetSettingBool("Enable Pause Screen Code", false);
 	if (enable_pause_code)
