@@ -4,7 +4,6 @@
 /Release
 mod.vcxproj.user
 *.exp
-*.lib
 *.pdb
 *.dll
 
